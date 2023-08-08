@@ -23,9 +23,7 @@ const PoliticianProvider = ({ children }) => {
     }
 
     useEffect(()=>{
-        if (!pol.length) {
-            getPol()
-        }
+        getPol()
     },[])
 
     return (

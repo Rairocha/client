@@ -4,15 +4,14 @@ import { PoliticianContext } from "../context/politicians.context"
 
 import { get } from "../services/authService"
 
-import PoliticianPreview from "../components/PoliticianPreview"
+import PoliticianSummary from "../components/PoliticianSummary"
 
 
-const AllPoliticians = () => {
+const MyPolitician = () => {
     const [follower, setFollow] = useState([]);
 
     const { pol } = useContext(PoliticianContext)
 
-    
     useEffect(() => {
         get('/users/following')
         .then((f)=>{
@@ -24,15 +23,17 @@ const AllPoliticians = () => {
        })}
     , [])
 
+    
+    
+
   return (
-    <div id="all-pol"> 
-        <h1>All Politicians</h1>
-        
+    <div id="my-pol"> 
+        <h1>My Politicians</h1>
         {
-            pol.map((p) => {
+            pol.filter((p)=>follower.includes(p._id)).map((p) => {
                 return (
                     
-                    <PoliticianPreview key={p._id} pol={p} follower={follower} setFollow={setFollow}/>
+                    <PoliticianSummary key={p._id} pol={p}/>
 
                 )
             })
@@ -41,4 +42,4 @@ const AllPoliticians = () => {
   )
 }
 
-export default AllPoliticians
+export default MyPolitician;

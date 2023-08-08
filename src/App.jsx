@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import AllPolitician from './pages/AllPoliticians';
+import MyPolitician from './pages/MyPolitician';
 
 function App() {
   /*const getToken = () => {
@@ -34,8 +35,8 @@ function App() {
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/politicians/all-politicians" element={ <AllPolitician />} />
-      
-
+      <Route path="/politicians/my-politicians" element={ <MyPolitician />} />
+     
 
       </Routes>
       

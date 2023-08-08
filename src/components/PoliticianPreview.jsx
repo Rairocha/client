@@ -1,20 +1,13 @@
-import { useContext, useEffect} from "react"
-import { Link } from "react-router-dom";
-import { get, post } from "../services/authService"
+import { useContext} from "react"
+import { post } from "../services/authService"
 import { AuthContext } from "../context/auth.context"
+
+import PoliticianSummary from "../components/PoliticianSummary"
 
 const PoliticianPreview = ({ pol , follower, setFollow }) => {
   
-
-  const newName= [pol.short_title,pol.first_name,pol.middle_name,pol.last_name].reduce((acc,i)=>{if(i){return acc+' '+i} else{return acc}})
-;
-  const {  user } = useContext(AuthContext)
-
-
-  
-
-  const addToUser=(polId,user)=>{
-    post(`/users/follow/${polId}`,user)
+  const addToUser=(polId)=>{
+    post(`/users/follow/${polId}`)
     .then((updatedUser)=>{
       setFollow(updatedUser.data.following);
     }) 
@@ -22,16 +15,21 @@ const PoliticianPreview = ({ pol , follower, setFollow }) => {
     
   }
 
-  
+  const removeToUser=(polId)=>{
+    post(`/users/unfollow/${polId}`)
+    .then((updatedUser)=>{
+      setFollow(updatedUser.data.following);
+    }) 
+    .catch((err)=>{console.log(err)});
+    
+  }
 
   return (
 
     <div> 
-    <Link to={`/politicians/${pol._id}`}>
-          
-            <p>{`${newName}`}</p>
-      </Link>
-      <button onClick={()=>{addToUser(pol._id,user)}}>Follow</button>
+      <PoliticianSummary key={pol._id} pol={pol}/>
+      {!follower.includes(pol._id)&&<button onClick={()=>{addToUser(pol._id)}}>Follow</button>}
+      {follower.includes(pol._id)&&<button onClick={()=>{removeToUser(pol._id)}}>Unfollow</button>}
     </div>
         
 

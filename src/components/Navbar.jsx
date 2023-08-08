@@ -22,7 +22,7 @@ function Navbar() {
                 <button>All Politicians</button>
             </Link>
             {user && 
-                <Link to='cart'>
+                <Link to='politicians/my-politicians'>
                     <button>My Politicians</button>
                 </Link>  
             }      
