@@ -8,6 +8,7 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
+import AllPolitician from './pages/AllPoliticians';
 
 function App() {
   /*const getToken = () => {
@@ -24,14 +25,17 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Pagina principal</h1>
       <Navbar />
+      <h1>Pagina principal</h1>
+      
       <Routes>      
         
       <Route path="/" element={ <HomePage /> } />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/login" element={<LoginPage />} />
-  
+      <Route path="/politicians/all-politicians" element={ <AllPolitician />} />
+      
+
 
       </Routes>
       

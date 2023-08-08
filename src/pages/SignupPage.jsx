@@ -33,7 +33,7 @@ function SignupPage() {
 
     post('/auth/signup', user)
       .then((response) => {
-        console.log('JWT token', response.data.authToken );
+        //console.log('JWT token', response.data.authToken );
         storeToken(response.data.authToken)
         authenticateUser()
         navigate('/');     

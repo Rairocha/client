@@ -9,7 +9,7 @@ function Navbar() {
     const getToken = () => {
         return localStorage.getItem('authToken')
       }
-
+    
   return (
     <nav>
       <Link to="/">
@@ -18,12 +18,12 @@ function Navbar() {
  
       {getToken() && (
         <>
-            <Link to="/add-sock">
-                <button>List Sock</button>
+            <Link to="/politicians/all-politicians">
+                <button>All Politicians</button>
             </Link>
             {user && 
                 <Link to='cart'>
-                    <button>See Cart</button>
+                    <button>My Politicians</button>
                 </Link>  
             }      
                 
