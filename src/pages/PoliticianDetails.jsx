@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState,Suspense } from "react"
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { PoliticianContext } from "../context/politicians.context"
-import { AuthContext } from "../context/auth.context"
 
-import { post } from "../services/authService"
+import Comment from "../components/Comment"
+
 
 const PoliticianDetails = ()=>{
     let param = useParams();
     
+    const [comments, setComment] = useState([])
     const { pol } = useContext(PoliticianContext);
     const [choosenPol,setChoosenPol] = useState(null)
 
@@ -27,7 +28,7 @@ const PoliticianDetails = ()=>{
     
     useEffect(()=>{
         setChoosenPol(pol.filter((p)=>{return p._id == param.polId})[0])
-    },[param.polId])
+    },[param.polId, pol])
 
     const stateObj = {'AL': 'Alabama',
     'AK': 'Alaska',
@@ -116,6 +117,7 @@ const PoliticianDetails = ()=>{
 
                 {choosenPol.contact_form&&<a href= {choosenPol.contact_form}><img src='https://upload.wikimedia.org/wikipedia/commons/5/5c/Email_Logo_PNG.png' style={{height: '3vh'}}/></a>}
             </div>
+            <Comment key={choosenPol._id} polId={choosenPol._id} comments={comments} setComment={setComment} />
         </div>
        
     )}
