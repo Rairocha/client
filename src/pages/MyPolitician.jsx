@@ -15,7 +15,7 @@ const MyPolitician = () => {
     useEffect(() => {
         get('/users/following')
         .then((f)=>{
-          console.log('following get',f.data.following)
+          //console.log('following get',f.data.following)
           setFollow(f.data.following)
         })
         .catch((err) => {
