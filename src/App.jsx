@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import AllPolitician from './pages/AllPoliticians';
 import MyPolitician from './pages/MyPolitician';
+import PoliticianDetails from './pages/PoliticianDetails';
 
 function App() {
   /*const getToken = () => {
@@ -36,7 +37,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/politicians/all-politicians" element={ <AllPolitician />} />
       <Route path="/politicians/my-politicians" element={ <MyPolitician />} />
-     
+      <Route path="/politicians/details/:polId" element={ <PoliticianDetails />} />
 
       </Routes>
       

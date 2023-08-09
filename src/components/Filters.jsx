@@ -1,6 +1,6 @@
 
 
-import { Divider, Input, Select,Form,Row , Column} from 'antd';
+import { Select,Form} from 'antd';
 import { useState } from "react"
 
 const Filters = ({ filterValues, setFilterValues}) => {
@@ -22,7 +22,6 @@ const Filters = ({ filterValues, setFilterValues}) => {
         <div id='filters'>
         
         <Form layout={'vertical'}>
-        <Space wrap>
         <Form.Item label="In office:" name="in_office" >
         <Select onChange = {(e)=>{
           {setFilterValues({...filterValues,"in_office": e })}
@@ -60,7 +59,6 @@ const Filters = ({ filterValues, setFilterValues}) => {
         },]}/>
         
         </Form.Item>
-        </Space>
         </Form>
         
         </div>}

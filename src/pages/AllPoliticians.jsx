@@ -1,6 +1,5 @@
 import { useContext, useEffect,useState } from "react"
 import { PoliticianContext } from "../context/politicians.context"
-import { Divider, Input, Select,Form,Button } from 'antd';
 
 import { get } from "../services/authService"
 
@@ -10,7 +9,6 @@ import Filters from "../components/Filters";
 
 const AllPoliticians = () => {
     const [follower, setFollow] = useState([]);
-    const [filterBool, setFilterBool] = useState(false);
     const [filterValues, setFilterValues] = useState({})
 
     const { pol } = useContext(PoliticianContext);
@@ -18,15 +16,6 @@ const AllPoliticians = () => {
     const filterPoliticians = (p)=>{
       return Object.keys(filterValues).filter((f)=>(filterValues[f]!='all'))
       .reduce((acc,k)=>{return acc&& p[k]==filterValues[k]},true)
-    }
-
-    const activateFilters = ()=>{
-      if (filterBool){
-        setFilterBool(false)
-      }
-      else{
-        setFilterBool(true)
-      }
     }
     
    
@@ -42,7 +31,7 @@ const AllPoliticians = () => {
     , [])
        
   
-console.log('result',  Object.keys(filterValues).filter((f)=>(filterValues[f]!='all')).reduce((acc,k)=>{return acc&& pol[0][k]==filterValues[k]},true)  )
+//console.log('result',  Object.keys(filterValues).filter((f)=>(filterValues[f]!='all')).reduce((acc,k)=>{return acc&& pol[0][k]==filterValues[k]},true)  )
   return (
     <div id="all-pol"> 
         <h1>All Politicians</h1>
