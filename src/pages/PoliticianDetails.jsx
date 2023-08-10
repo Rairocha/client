@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState,Suspense } from "react"
-import { Link, useParams, useNavigate } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
+import {  useParams } from "react-router-dom"
 import { PoliticianContext } from "../context/politicians.context"
 
 import Comment from "../components/Comment"
-
+import TimeLine from "../components/TimeLine"
 
 const PoliticianDetails = ()=>{
     let param = useParams();
@@ -90,7 +90,11 @@ const PoliticianDetails = ()=>{
     'WV': 'West Virginia',
     'WI': 'Wisconsin',
     'WY': 'Wyoming'}
-
+    /*{choosenPol['roles'].map((i)=>{
+                return (<p>{i['title']}: {i['start_date']}-{i['end_date']}</p>
+                )}
+            )} */
+   
    if(choosenPol){
     return (
         
@@ -100,13 +104,12 @@ const PoliticianDetails = ()=>{
             {choosenPol.in_office&&<p>Age : {getAge(choosenPol.date_of_birth)}</p>}
             <p>Date of Birth:  {new Date(choosenPol.date_of_birth).toLocaleDateString("en-US")}</p>
             <p>Gender: {choosenPol.gender}</p>
-            <p>Party: {choosenPol.party.replace('R','Republican').replace('D','Democrat')}</p>
+            <p>Party: {choosenPol.party.replace('R','Republican').replace('D','Democrat').replace('I','Independent').replace('P','Progressive')}</p>
             <p>Highest Seniority: {choosenPol.seniority}</p>
             <p>State: {stateObj[choosenPol.state]}, {choosenPol.state}</p>
-            {pol[0]['roles'].map((i)=>{
-                return (<p>{i['title']}: {i['start_date']}-{i['end_date']}</p>
-                )}
-            )}
+            <p>Number of terms served: {choosenPol['roles'].length}</p>
+            <TimeLine choosenPol={choosenPol}/>
+            
             {choosenPol.phone&&<p>Phone: {choosenPol.phone}</p>}
             <div id='logos'>
                 {choosenPol.facebook_account&&<a href= {'https://www.facebook.com/'+ choosenPol.facebook_account}><img src='https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg' style={{height: '3vh'}}/></a>}
