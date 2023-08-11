@@ -1,6 +1,6 @@
 import { useContext, useEffect,useState } from "react"
 import { PoliticianContext } from "../context/politicians.context"
-
+import {Divider} from 'antd'
 
 import { get } from "../services/authService"
 
@@ -32,9 +32,10 @@ const MyPolitician = () => {
         {
             pol.filter((p)=>follower.includes(p._id)).map((p) => {
                 return (
-                    
+                    <div>
                     <PoliticianSummary key={p._id} pol={p}/>
-
+                    <Divider/>
+                    </div>
                 )
             })
         }

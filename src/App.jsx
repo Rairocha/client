@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <h1>Pagina principal</h1>
+  
       
       <Routes>      
         

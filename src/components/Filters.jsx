@@ -19,9 +19,9 @@ const Filters = ({ filterValues, setFilterValues}) => {
         {filterBool&&<button onClick={()=>{activateFilters()}}>Hide Filters</button>}
         {!filterBool&&<button onClick={()=>{activateFilters()}}>Show Filters</button>}
         {filterBool&&
-        <div id='filters'>
+        <div id='filters' >
         
-        <Form layout={'vertical'}>
+        <Form layout={'vertical'} >
         <Form.Item label="In office:" name="in_office" >
         <Select onChange = {(e)=>{
           {setFilterValues({...filterValues,"in_office": e })}
@@ -52,6 +52,40 @@ const Filters = ({ filterValues, setFilterValues}) => {
         {
           value: 'D',
           label: 'Democrat',
+        },
+        {
+          value: 'all',
+          label: 'All',
+        },]}/>
+        
+        </Form.Item>
+        <Form.Item label="Gender:" name="gender" >
+        <Select onChange = {(e)=>{{setFilterValues({...filterValues,"gender": e })}}} defaultValue={'All'} style={{
+        width: 120, }} options={[
+        {
+          value: 'M',
+          label: 'Male',
+        },
+        {
+          value: 'F',
+          label: 'Female',
+        },
+        {
+          value: 'all',
+          label: 'All',
+        },]}/>
+        
+        </Form.Item>
+        <Form.Item label="Title:" name="title" >
+        <Select onChange = {(e)=>{{setFilterValues({...filterValues,"short_title": e })}}} defaultValue={'All'} style={{
+        width: 120, }} options={[
+        {
+          value: 'Rep.',
+          label: 'Representative',
+        },
+        {
+          value: 'Sen.',
+          label: 'Senator',
         },
         {
           value: 'all',

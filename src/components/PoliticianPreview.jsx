@@ -26,11 +26,13 @@ const PoliticianPreview = ({ pol , follower, setFollow }) => {
 
   return (
 
-    <div> 
+    <div style={{display:'flex',justifyContent:'space-between', alignContent:'center'}}> 
       <PoliticianSummary key={pol._id} pol={pol}/>
-      {!follower.includes(pol._id)&&<button onClick={()=>{addToUser(pol._id)}}>Follow</button>}
-      {follower.includes(pol._id)&&<button onClick={()=>{removeToUser(pol._id)}}>Unfollow</button>}
+      {!follower.includes(pol._id)&&<button style={{width:'7vw',height:'5vh'}} onClick={()=>{addToUser(pol._id)} }>Follow</button>}
+      {follower.includes(pol._id)&&<button style={{width:'7vw',height:'5vh'}} onClick={()=>{removeToUser(pol._id)}}>Unfollow</button>}
+      
     </div>
+    
         
 
   );
